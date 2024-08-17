@@ -10,12 +10,20 @@ const COLOR_INCREMENT = 15;
 const reducer = (state, action) => {
   switch (action.colorToChange) {
     case 'red':
-      // take the current amount whatever the 'red' is and add in hovewer much I specified on that 'action' Obj
-      return { ...state, red: state.red + action.amount }; // copy paste all the Values out of 'state', adding them to this New Obj and overwriting the New Obj (NO CHANGES MADE TO THE ORIGINAL 'state' OBJ)
+      // Validation
+      return state.red + action.amount > 255 || state.red + action.amount < 0
+        ? state // must return existing State Obj, otherwise it will set itself as 'undefined'
+        : // take the current amount whatever the 'red' is and add in hovewer much I specified on that 'action' Obj
+          { ...state, red: state.red + action.amount }; // copy paste all the Values out of 'state', adding them to this New Obj and overwriting the New Obj (NO CHANGES MADE TO THE ORIGINAL 'state' OBJ)
     case 'green':
-      return { ...state, green: state.green + action.amount };
+      return state.green + action.amount > 255 ||
+        state.green + action.amount < 0
+        ? state
+        : { ...state, green: state.green + action.amount };
     case 'blue':
-      return { ...state, blue: state.blue + action.amount };
+      return state.blue + action.amount > 255 || state.blue + action.amount < 0
+        ? state
+        : { ...state, blue: state.blue + action.amount };
     default:
       return state;
   }
