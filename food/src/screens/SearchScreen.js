@@ -17,8 +17,8 @@ const SearchScreen = () => {
   };
   console.log(results);
   return (
-    // flex 1 so the content won't expand of the screen
-    <View style={{ flex: 1 }}>
+    // <></> - when return multiple grouping elements
+    <>
       <SearchBar
         term={term}
         // onTermChange={(newTerm) => setTerm(newTerm)}
@@ -28,7 +28,6 @@ const SearchScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length} results</Text>
       <ScrollView>
         <ResultsList
           results={filterResultsByPrice('€')}
@@ -40,7 +39,7 @@ const SearchScreen = () => {
           title="Big Spender"
         />
       </ScrollView>
-    </View>
+    </>
   );
 };
 
