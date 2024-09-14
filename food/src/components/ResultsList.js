@@ -18,10 +18,13 @@ const ResultsList = ({ title, results, navigation }) => {
         showsHorizontalScrollIndicator={false}
         data={results}
         keyExtractor={(result) => result.id}
+        // { item } - is the 'result' of the business object that I'm fetching
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('ResultsShow')}
+              onPress={() =>
+                navigation.navigate('ResultsShow', { id: item.id })
+              }
             >
               <ResultsDetail result={item} />
             </TouchableOpacity>
