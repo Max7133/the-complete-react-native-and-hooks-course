@@ -10,6 +10,11 @@ import { withNavigation } from 'react-navigation'; // won't need to pass props f
 import ResultsDetail from './ResultsDetail';
 
 const ResultsList = ({ title, results, navigation }) => {
+  // if there are no results e.g. in Big Spender category, then don't show anything not event the title
+  if (!results.length) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
