@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import yelp from '../api/yelp';
 
-const ResultsShowScreen = ({ navigation }) => {
+const ResultsShowScreen = ({ route }) => {
   const [result, setResult] = useState(null); // the data object has not been fetched iniitially
-  const id = navigation.getParam('id');
+  // NAV4
+  // const id = navigation.getParam('id');
+  // NAV 6
+  const id = route.params.id;
 
   // fetches 1 restaurant that I clicked
   // id - id of restaurant to retrive

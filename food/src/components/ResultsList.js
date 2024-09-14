@@ -6,10 +6,15 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import { withNavigation } from 'react-navigation'; // won't need to pass props from SearchScreen, and now can directly inject navigation in this component
+// NAV4
+// import { withNavigation } from 'react-navigation'; // won't need to pass props from SearchScreen, and now can directly inject navigation in this component
+// NAV 6
+import { useNavigation } from '@react-navigation/native'; // won't need to pass props from SearchScreen, and now can directly inject navigation in this component
 import ResultsDetail from './ResultsDetail';
 
-const ResultsList = ({ title, results, navigation }) => {
+const ResultsList = ({ title, results }) => {
+  // use of the useNavigation hook to access the navigation prop instead
+  const navigation = useNavigation();
   // if there are no results e.g. in Big Spender category, then don't show anything not event the title
   if (!results.length) {
     return null;
@@ -52,4 +57,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(ResultsList);
+// NAV 4
+// export default withNavigation(ResultsList);
+export default ResultsList;
